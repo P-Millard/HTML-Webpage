@@ -2,13 +2,14 @@
 
 function add()
 {
-    const inputArray = [];
-
     const input = document.getElementById("input");
 
     const value = input.value;
 
-    inputArray.push(value);
+    data.push(value);
+}
 
-    console.log(inputArray);
+function remove()
+{
+
 }
