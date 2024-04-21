@@ -6,7 +6,6 @@
     <title> Card Tracker </title>
 </head>
 <link rel="stylesheet" href="StyleSheet1.css">
-<script src="Script1.js"></script>
 <body>
     <form id="form">
         <input type="text" id="user" name="u" placeholder="Username..." aria-label="Input User Name">
@@ -17,9 +16,6 @@
 
 
     <center>
-        <script>
-            const data = ["R"];
-        </script>
         <div class="bannerContainer">
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
@@ -33,19 +29,17 @@
                 <form id="form">
                     <input type="text" style="text-transform:uppercase" id="input" name="in" placeholder="Card Name..." aria-label="Input A Card Name">
                     <button name="Add" onclick="add()">Add</button>
-                    <script>
-                        function add()
-                        {
-                            const input = document.getElementById("input");
-
-                            const value = input.value;
-
-                            data.push(value);
-                        }
-                    </script>
                     <button name="Remove" onclick="remove()">Remove</button>
                     <button name="Search" onclick="search()">Search</button>
                 </form>
+                <script>
+                    var dataArr = ["A", "B", "C", "D"]
+
+                    function add()
+                    {
+                        var inputText = document.getElementById('input').value
+                    }
+                </script>
             </div>
 
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
@@ -59,19 +53,7 @@
             <div class="gridItem"><p>PlaceHolder</p></div>
         </div>
 
-        <ul id="myList"></ul>
-
-        <script>
-            let list =
-                document.getElementById("myList");
-
-            data.forEach((item) => {
-                let li =
-                    document.createElement("li");
-                li.innerText = item;
-                list.appendChild(li);
-            });
-        </script>
+        <p id="pText"></p>
 
     </center>
 
