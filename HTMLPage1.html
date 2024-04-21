@@ -27,16 +27,11 @@
 
                 <div class="bannerItem">
                     <h1><b><u>How To Use</u></b></h1>
-                    <p>
-
-                        "#Cardname" = Search For A Specific Card<br>
-                        "+Cardname" = Add A Card To Your Collection<br>
-                        "-Cardname" = Remove A Card From Your Collection<br>
-
-                    </p>
                     <form id="form">
-                        <input type="text" id="input" name="in" placeholder="Instruction..." aria-label="Input Commands For The System">
-                        <button>Go</button>
+                        <input type="text" id="input" name="in" placeholder="Card Name..." aria-label="Input A Card Name">
+                        <button name="Add" onclick="add()">Add</button>
+                        <button name="Remove" onclick="remove()">Remove</button>
+                        <button name="Search" onclick="search()">Search</button>
                     </form>
                 </div>
 
