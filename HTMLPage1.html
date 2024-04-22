@@ -22,7 +22,6 @@
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
-            <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
 
             <div class="bannerItem">
                 <h1><b><u>Magic Management</u></b></h1>
@@ -46,7 +45,10 @@
                         var pval = "";
 
                         for (i = 0; i < dataArr.length; i++) {
-                            pval = pval + dataArr[i] + "<br/>";
+                            pval = pval + dataArr[i] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                            if (((i + 1) % 5) == 0) {
+                                pval = pval + "<br/>" + "<br/>";
+                            }
                         }
 
                         document.getElementById('pText').innerHTML = pval;
@@ -67,17 +69,23 @@
                         }
 
                         i = dataArr.length - 1
-                        if (inputText == dataArr[i]) {
-                            dataArr.pop()
-                        }
+
                         if (toggle == 1) {
                             dataArr.pop()
+                        }
+                        else {
+                            if (inputText == dataArr[i]) {
+                                dataArr.pop()
+                            }
                         }
 
                         var pval = "";
 
                         for (i = 0; i < dataArr.length; i++) {
-                            pval = pval + dataArr[i] + "<br/>";
+                            pval = pval + dataArr[i] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                            if (((i + 1) % 5) == 0) {
+                                pval = pval + "<br/>" + "<br/>";
+                            }
                         }
 
                         document.getElementById('pText').innerHTML = pval;
@@ -97,16 +105,18 @@
                         var pval = "";
 
                         for (i = 0; i < dataArr.length; i++) {
-                            pval = pval + dataArr[i] + "<br/>";
+                            pval = pval + dataArr[i] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                            if (((i + 1) % 5) == 0) {
+                                pval = pval + "<br/>" + "<br/>";
+                            }
                         }
 
                         document.getElementById('pText').innerHTML = pval;
                     }
                 </script>
-                <p id="pText"></p>
+                
             </div>
 
-            <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
@@ -116,6 +126,9 @@
 
         
 
+    </center>
+    <center>
+        <p id="pText"></p>
     </center>
 
 
