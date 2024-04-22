@@ -26,13 +26,10 @@
             <div class="bannerItem">
                 <h1><b><u>Magic Management</u></b></h1>
 
-                <input type="text" id="input" name="in" placeholder="Card Name..." aria-label="Input A Card Name">
+                <input oninput="this.value = this.value.toUpperCase()" type="text" id="input" name="in" placeholder="Card Name..." aria-label="Input A Card Name">
                 <button name="Add" onclick="add();">Add</button>
                 <button name="Remove" onclick="remove()">Remove</button>
                 <button name="Search" onclick="search()">Search</button>
-
-                <p>Number Of Search Card In Collection:</p>
-                <p id="searchText"></p>
 
                 <script>
                     var dataArr = []
@@ -46,8 +43,8 @@
 
                         i = dataArr.length - 1;
 
-                        gridContainer.innerHTML += '<div>' + dataArr[i] + '</div>';
-                        
+                        gridContainer.innerHTML += '<div class="gridItem">' + dataArr[i] + '</div>';
+
                     }
 
                     function remove() {
@@ -80,7 +77,7 @@
                         gridContainer.innerHTML = ' ';
 
                         for (let i = 0; i < dataArr.length; i++) {
-                            gridContainer.innerHTML += '<div>' + dataArr[i] + '</div>';
+                            gridContainer.innerHTML += '<div class="gridItem">' + dataArr[i] + '</div>';
                         }
 
                     }
@@ -94,11 +91,11 @@
                                 found = found + 1;
                             }
                         }
-                        document.getElementById('searchText').innerHTML = found;
+                        alert("Number Of Searched Card In Collection: " + found);
 
                     }
                 </script>
-                
+
             </div>
 
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
@@ -112,7 +109,7 @@
 
     </center>
 
-    <div id="gridContainer">
+    <div class="gridContainer" id="gridContainer">
 
     </div>
 
