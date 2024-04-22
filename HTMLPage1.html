@@ -13,6 +13,8 @@
         <button>Login</button>
         <button>Sign Up</button>
     </form>
+        <button name="Save" onclick="save()">Save</button>
+        <button name="Load" onclick="load()">Load</button>
 
 
     <center>
@@ -94,6 +96,31 @@
                         alert("Number Of Searched Card In Collection: " + found);
 
                     }
+
+                    function save() {
+                        let string = JSON.stringify(dataArr)
+                        localStorage.setItem("data", string)
+                    }
+
+                    function load() {
+                        let retString = localStorage.getItem("data")
+                        let retArr = JSON.parse(retString)
+
+                        for (let i = 0; i < dataArr.length; i++) {
+                            dataArr.pop();
+                        }
+
+                        gridContainer.innerHTML = ' ';
+
+                        for (let i = 0; i < retArr.length; i++) {
+                            dataArr[i] = retArr[i];
+                        }
+
+                        for (let i = 0; i < dataArr.length; i++) {
+                            gridContainer.innerHTML += '<div class="gridItem">' + dataArr[i] + '</div>';
+                        }
+                    }
+
                 </script>
 
             </div>
