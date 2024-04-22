@@ -26,7 +26,7 @@
             <div class="bannerItem">
                 <h1><b><u>Magic Management</u></b></h1>
 
-                <input type="text" style="text-transform:uppercase" id="input" name="in" placeholder="Card Name..." aria-label="Input A Card Name">
+                <input type="text" id="input" name="in" placeholder="Card Name..." aria-label="Input A Card Name">
                 <button name="Add" onclick="add();">Add</button>
                 <button name="Remove" onclick="remove()">Remove</button>
                 <button name="Search" onclick="search()">Search</button>
@@ -42,16 +42,12 @@
 
                         dataArr.push(inputText);
 
-                        var pval = "";
+                        const gridContainer = document.getElementById("gridContainer");
 
-                        for (i = 0; i < dataArr.length; i++) {
-                            pval = pval + dataArr[i] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-                            if (((i + 1) % 5) == 0) {
-                                pval = pval + "<br/>" + "<br/>";
-                            }
-                        }
+                        i = dataArr.length - 1;
 
-                        document.getElementById('pText').innerHTML = pval;
+                        gridContainer.innerHTML += '<div>' + dataArr[i] + '</div>';
+                        
                     }
 
                     function remove() {
@@ -79,16 +75,14 @@
                             }
                         }
 
-                        var pval = "";
+                        const gridContainer = document.getElementById("gridContainer");
 
-                        for (i = 0; i < dataArr.length; i++) {
-                            pval = pval + dataArr[i] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-                            if (((i + 1) % 5) == 0) {
-                                pval = pval + "<br/>" + "<br/>";
-                            }
+                        gridContainer.innerHTML = ' ';
+
+                        for (let i = 0; i < dataArr.length; i++) {
+                            gridContainer.innerHTML += '<div>' + dataArr[i] + '</div>';
                         }
 
-                        document.getElementById('pText').innerHTML = pval;
                     }
 
                     function search() {
@@ -102,16 +96,6 @@
                         }
                         document.getElementById('searchText').innerHTML = found;
 
-                        var pval = "";
-
-                        for (i = 0; i < dataArr.length; i++) {
-                            pval = pval + dataArr[i] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-                            if (((i + 1) % 5) == 0) {
-                                pval = pval + "<br/>" + "<br/>";
-                            }
-                        }
-
-                        document.getElementById('pText').innerHTML = pval;
                     }
                 </script>
                 
@@ -124,10 +108,13 @@
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
 
         </div>
-
         
 
     </center>
+
+    <div id="gridContainer">
+
+    </div>
 
         <p id="pText"></p>
 
