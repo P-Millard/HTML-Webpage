@@ -3,3 +3,29 @@
     background-color: black;
     color: white;
 }
+
+
+.bannerContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto;
+    padding: 5px;
+}
+.bannerItem {
+    padding: 5px;
+    font-size: 20px;
+    text-align: center;
+}
+.gridContainer 
+{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    padding: 5px;
+}
+
+.gridItem 
+{
+    padding: 5px;
+    font-size: 20px;
+    text-align: center;
+}
+
