@@ -25,19 +25,75 @@
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
 
             <div class="bannerItem">
-                <h1><b><u>How To Use</u></b></h1>
-                <form id="form">
-                    <input type="text" style="text-transform:uppercase" id="input" name="in" placeholder="Card Name..." aria-label="Input A Card Name">
-                    <button name="Add" onclick="add()">Add</button>
-                    <button name="Remove" onclick="remove()">Remove</button>
-                    <button name="Search" onclick="search()">Search</button>
-                </form>
-                <script>
-                    var dataArr = ["A", "B", "C", "D"]
+                <h1><b><u>Magic Management</u></b></h1>
 
-                    function add()
-                    {
-                        var inputText = document.getElementById('input').value
+                <input type="text" style="text-transform:uppercase" id="input" name="in" placeholder="Card Name..." aria-label="Input A Card Name">
+                <button name="Add" onclick="add();">Add</button>
+                <button name="Remove" onclick="remove()">Remove</button>
+                <button name="Search" onclick="search()">Search</button>
+
+                <script>
+                    var dataArr = []
+
+                    function add() {
+                        var inputText = document.getElementById('input').value;
+
+                        dataArr.push(inputText);
+
+                        var pval = "";
+
+                        for (i = 0; i < dataArr.length; i++) {
+                            pval = pval + dataArr[i] + "<br/>";
+                        }
+
+                        document.getElementById('pText').innerHTML = pval;
+                    }
+
+                    function remove() {
+                        var inputText = document.getElementById('input').value;
+
+                        var toggle = 0;
+                        for (i = 0; i < dataArr.length - 1; i++) {
+                            if (inputText == dataArr[i]) {
+                                dataArr[i] = dataArr[i + 1];
+                                var toggle = 1;
+                            }
+                            if (toggle == 1) {
+                                dataArr[i] = dataArr[i + 1];
+                            }
+                        }
+
+                        i = dataArr.length - 1
+                        if (inputText == dataArr[i]) {
+                            dataArr.pop()
+                        }
+                        if (toggle == 1) {
+                            dataArr.pop()
+                        }
+
+                        var pval = "";
+
+                        for (i = 0; i < dataArr.length; i++) {
+                            pval = pval + dataArr[i] + "<br/>";
+                        }
+
+                        document.getElementById('pText').innerHTML = pval;
+                    }
+                    function search() {
+                        var found = 0;
+                        for (i = 0; i < dataArr.length; i++) {
+                            if (inputText == dataArr[i]) {
+                                found = found + 1;
+                            }
+                        }
+
+                        var pval = "";
+
+                        for (i = 0; i < dataArr.length; i++) {
+                            pval = pval + dataArr[i] + "<br/>";
+                        }
+
+                        document.getElementById('pText').innerHTML = pval;
                     }
                 </script>
             </div>
