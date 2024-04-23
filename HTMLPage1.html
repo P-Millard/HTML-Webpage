@@ -7,15 +7,39 @@
 </head>
 <link rel="stylesheet" href="StyleSheet1.css">
 <body>
-    <form id="form">
         <input type="text" id="user" name="u" placeholder="Username..." aria-label="Input User Name">
         <input type="password" id="pass" name="p" placeholder="Password..." aria-label="Input Password">
-        <button>Login</button>
+        <button onclick="load()">Login</button>
         <button>Sign Up</button>
-    </form>
         <button name="Save" onclick="save()">Save</button>
-        <button name="Load" onclick="load()">Load</button>
 
+    <script>
+
+        function save() {
+            let string = JSON.stringify(dataArr)
+            localStorage.setItem("data", string)
+        }
+
+        function load() {
+            let retString = localStorage.getItem("data")
+            let retArr = JSON.parse(retString)
+
+            for (let i = 0; i < dataArr.length; i++) {
+                dataArr.pop();
+            }
+
+            gridContainer.innerHTML = ' ';
+
+            for (let i = 0; i < retArr.length; i++) {
+                dataArr[i] = retArr[i];
+            }
+
+            for (let i = 0; i < dataArr.length; i++) {
+                gridContainer.innerHTML += '<div class="gridItem">' + dataArr[i] + '</div>';
+            }
+        }
+
+    </script>
 
     <center>
         <div class="bannerContainer">
@@ -32,6 +56,8 @@
                 <button name="Add" onclick="add();">Add</button>
                 <button name="Remove" onclick="remove()">Remove</button>
                 <button name="Search" onclick="search()">Search</button>
+                <button name="Tag" onclick="tag()">Tag</button>
+                <button name="Untag" onclick="untag()">Untag</button>
 
                 <script>
                     var dataArr = []
@@ -93,28 +119,53 @@
                                 found = found + 1;
                             }
                         }
-                        alert("Number Of Searched Card In Collection: " + found);
+                        alert("Number Of Unused Cards In Collection With That Name: " + found);
 
                     }
 
-                    function save() {
-                        let string = JSON.stringify(dataArr)
-                        localStorage.setItem("data", string)
-                    }
+                    function tag() {
+                        var inputText = document.getElementById('input').value;
 
-                    function load() {
-                        let retString = localStorage.getItem("data")
-                        let retArr = JSON.parse(retString)
+                        var toggle = 0;
 
-                        for (let i = 0; i < dataArr.length; i++) {
-                            dataArr.pop();
+                        for (i = 0; i < dataArr.length; i++) {
+                            if (inputText == dataArr[i]) {
+                                if (toggle == 0) {
+                                    dataArr[i] = dataArr[i] + " (In Use)";
+                                    var toggle = 1;
+                                }
+                                
+                            }
                         }
+
+                        const gridContainer = document.getElementById("gridContainer");
 
                         gridContainer.innerHTML = ' ';
 
-                        for (let i = 0; i < retArr.length; i++) {
-                            dataArr[i] = retArr[i];
+                        for (let i = 0; i < dataArr.length; i++) {
+                            gridContainer.innerHTML += '<div class="gridItem">' + dataArr[i] + '</div>';
                         }
+                    }
+
+                    function untag() {
+
+                        var inputText = document.getElementById('input').value;
+
+                        var toggle = 0;
+
+                        for (i = 0; i < dataArr.length; i++) {
+                            if (inputText + " (In Use)" == dataArr[i]) {
+                                if (toggle == 0) {
+                                    dataArr[i] = inputText;
+                                    var toggle = 1;
+                                }
+
+                            }
+                        }
+
+                        const gridContainer = document.getElementById("gridContainer");
+
+                        gridContainer.innerHTML = ' ';
 
                         for (let i = 0; i < dataArr.length; i++) {
                             gridContainer.innerHTML += '<div class="gridItem">' + dataArr[i] + '</div>';
