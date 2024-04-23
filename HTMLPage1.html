@@ -7,36 +7,108 @@
 </head>
 <link rel="stylesheet" href="StyleSheet1.css">
 <body>
-        <input type="text" id="user" name="u" placeholder="Username..." aria-label="Input User Name">
-        <input type="password" id="pass" name="p" placeholder="Password..." aria-label="Input Password">
-        <button onclick="load()">Login</button>
-        <button>Sign Up</button>
-        <button name="Save" onclick="save()">Save</button>
+    <input type="text" id="user" name="u" placeholder="Username..." aria-label="Input User Name">
+    <input type="password" id="pass" name="p" placeholder="Password..." aria-label="Input Password">
+    <button name="Load" onclick="load()">Login</button>
+    <button name="Save" onclick="save()">Save</button>
+    <button name="Sign Up" onclick="signUp()">Sign Up</button>
 
     <script>
 
+        var userArr = [];
+        var passArr = [];
+
         function save() {
-            let string = JSON.stringify(dataArr)
-            localStorage.setItem("data", string)
+
+            var user = document.getElementById('user').value;
+
+            let string = JSON.stringify(dataArr);
+            localStorage.setItem(user, string);
         }
 
         function load() {
-            let retString = localStorage.getItem("data")
-            let retArr = JSON.parse(retString)
 
-            for (let i = 0; i < dataArr.length; i++) {
-                dataArr.pop();
+            let retUser = localStorage.getItem("user");
+            let retUserArr = JSON.parse(retUser);
+
+            let retPass = localStorage.getItem("pass");
+            let retPassArr = JSON.parse(retPass);
+
+            var count = 0;
+            var user = document.getElementById('user').value;
+            var pass = document.getElementById('pass').value;
+
+            for (let i = 0; i < retUserArr.length; i++) {
+                if (user == retUserArr[i]) {
+                    break;
+                }
+                else {
+                    count++
+                }
+                
             }
 
-            gridContainer.innerHTML = ' ';
+            if (pass == retPassArr[count]) {
+                let retString = localStorage.getItem(user);
+                let retArr = JSON.parse(retString);
 
-            for (let i = 0; i < retArr.length; i++) {
-                dataArr[i] = retArr[i];
+                for (let i = 0; i < dataArr.length; i++) {
+                    dataArr.pop();
+                }
+
+                gridContainer.innerHTML = ' ';
+
+                for (let i = 0; i < retArr.length; i++) {
+                    dataArr[i] = retArr[i];
+                }
+
+                for (let i = 0; i < dataArr.length; i++) {
+                    gridContainer.innerHTML += '<div class="gridItem">' + dataArr[i] + '</div>';
+                }
+            }
+            else {
+                alert("Incorrect Username or Password");
             }
 
-            for (let i = 0; i < dataArr.length; i++) {
-                gridContainer.innerHTML += '<div class="gridItem">' + dataArr[i] + '</div>';
+            
+        }
+
+        function signUp() {
+
+            //Test Detals = Username Password
+            //Demo Details = Paris 12345
+
+            var user = document.getElementById('user').value;
+            var pass = document.getElementById('pass').value;
+            var taken = 0;
+
+            let retUser = localStorage.getItem("user");
+            let retUserArr = JSON.parse(retUser);
+
+            for (let i = 0; i < retUserArr.length; i++) {
+                if (user == retUserArr[i]) {
+                    taken = 1;
+                }
+
             }
+
+            if (taken == 0) {
+                userArr.push(user);
+                passArr.push(pass);
+
+                let userString = JSON.stringify(userArr);
+                localStorage.setItem("user", userString);
+
+                let passString = JSON.stringify(passArr);
+                localStorage.setItem("pass", passString);
+
+                alert("Account Details Added, Please Ensure Both Fields Are Filled When Attempting To Save And Login");
+            }
+            else {
+                alert("Username Already Taken");
+            }
+            
+
         }
 
     </script>
@@ -134,7 +206,7 @@
                                     dataArr[i] = dataArr[i] + " (In Use)";
                                     var toggle = 1;
                                 }
-                                
+
                             }
                         }
 
@@ -183,7 +255,7 @@
             <div class="bannerItem"><img src="https://i.redd.it/jd2sdm59hdo31.png" height="140px" width="100px"></div>
 
         </div>
-        
+
 
     </center>
 
@@ -191,7 +263,7 @@
 
     </div>
 
-        <p id="pText"></p>
+    <p id="pText"></p>
 
 
 
