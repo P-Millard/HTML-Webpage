@@ -19,12 +19,12 @@
 {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
-    padding: 5px;
+    padding: 20px;
 }
 
 .gridItem 
 {
-    padding: 5px;
+    padding: 20px;
     font-size: 20px;
     text-align: center;
 }
